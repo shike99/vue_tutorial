@@ -5,7 +5,25 @@
     <title>vue_tutorial</title>
   </head>
   <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app">
+      <hello></hello>
+      <div v-bind:class="{'error': !isValid}" v-bind:style="{'border': (isValid ? '' : '1px solid red')}">
+        {{ message }}
+      </div>
+      <button v-on:click="reverseMessage">Reverse Message</button>
+      <input v-model="message">
+      <p v-show="!isValid">
+        メッセージを入力してください
+      </p>
+      <p v-if="seen">Now you see me</p>
+      <span v-bind:title="message2">
+        Hover your mouse over me for a few seconds
+        to see my dynamically bound title!
+      </span>
+      <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+      </ol>
+      <div>{{ name }}は{{ priceWithTax }}円<span>(原価:<input v-model.lazy="price">)</span></div>
+    </div>
   </body>
 </html>
